@@ -1,0 +1,47 @@
+buildscript {
+    ext {
+        lombokVersion = '1.18.20'
+        javaPoetVersion = '1.13.0'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '1.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+group 'com.aiskov.gradle.plugins'
+version = '1.0.1'
+
+dependencies {
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+        
+    implementation "com.squareup:javapoet:${javaPoetVersion}"
+    implementation  'org.assertj:assertj-core:3.25.3'
+}
+
+gradlePlugin {
+    plugins {
+        create("gradle-test-tools") {
+            println "${group}:${rootProject.name}:${version}"
+
+            id = "${rootProject.name}"
+
+            displayName = "Gradle Test Tools"
+            description = "Tools that helps to create tests."
+
+            tags.addAll(["assertj", "testing", "generator"])
+
+            implementationClass = "com.aiskov.gradle.plugins.GradleTestToolsPlugin"
+        }
+    }
+}
