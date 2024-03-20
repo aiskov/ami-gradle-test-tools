@@ -3,6 +3,8 @@ package com.aiskov.gradle.plugins.asserts.creators;
 import com.aiskov.gradle.plugins.asserts.AssertionContext.AssertionFieldContext;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.MethodSpec;
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +27,7 @@ public class StringAssertionCreator implements AssertionCreator {
                         "is%sEmpty".formatted(context.getFieldName()),
                         context.getSelfClass(),
                         builder -> builder
-                                .beginControlFlow("if (! $T.isEmptyString($L))", ClassName.get("com.gene.common.tools", "CheckUtils"), context.getValueAccess())
+                                .beginControlFlow("if (! $T.isEmpty($L))", ClassName.get(StringUtils.class), context.getValueAccess())
                                 .addStatement(failStatement(context, "is empty"))
                                 .endControlFlow()
                 ),
@@ -35,7 +37,7 @@ public class StringAssertionCreator implements AssertionCreator {
                         "is%sNotEmpty".formatted(context.getFieldName()),
                         context.getSelfClass(),
                         builder -> builder
-                                .beginControlFlow("if (! $T.isNotEmptyString($L))", ClassName.get("com.gene.common.tools", "CheckUtils"), context.getValueAccess())
+                                .beginControlFlow("if (! $T.isNotEmpty($L))", ClassName.get(StringUtils.class), context.getValueAccess())
                                 .addStatement(failStatement(context, "is not empty"))
                                 .endControlFlow()
                 ),
@@ -45,7 +47,7 @@ public class StringAssertionCreator implements AssertionCreator {
                         "is%sBlank".formatted(context.getFieldName()),
                         context.getSelfClass(),
                         builder -> builder
-                                .beginControlFlow("if (! $T.isBlank($L))", ClassName.get("org.apache.commons.lang3", "StringUtils"), context.getValueAccess())
+                                .beginControlFlow("if (! $T.isBlank($L))", ClassName.get(StringUtils.class), context.getValueAccess())
                                 .addStatement(failStatement(context, "is blank"))
                                 .endControlFlow()
                 ),
@@ -55,7 +57,7 @@ public class StringAssertionCreator implements AssertionCreator {
                         "is%sNotBlank".formatted(context.getFieldName()),
                         context.getSelfClass(),
                         builder -> builder
-                                .beginControlFlow("if (! $T.isNotBlank($L))", ClassName.get("org.apache.commons.lang3", "StringUtils"), context.getValueAccess())
+                                .beginControlFlow("if (! $T.isNotBlank($L))", ClassName.get(StringUtils.class), context.getValueAccess())
                                 .addStatement(failStatement(context, "is not blank"))
                                 .endControlFlow()
                 ),
@@ -66,7 +68,7 @@ public class StringAssertionCreator implements AssertionCreator {
                         ClassName.get(String.class),
                         context.getSelfClass(),
                         builder -> builder
-                                .beginControlFlow("if (! $T.equalsIgnoreCase($L, expected))", ClassName.get("org.apache.commons.lang3", "StringUtils"), context.getValueAccess())
+                                .beginControlFlow("if (! $T.equalsIgnoreCase($L, expected))", ClassName.get(StringUtils.class), context.getValueAccess())
                                 .addStatement(failStatement(context, "is equal ignoring case <%s>"))
                                 .endControlFlow()
                 ),
@@ -77,7 +79,7 @@ public class StringAssertionCreator implements AssertionCreator {
                         ClassName.get(String.class),
                         context.getSelfClass(),
                         builder -> builder
-                                .beginControlFlow("if ($T.equalsIgnoreCase($L, expected))", ClassName.get("org.apache.commons.lang3", "StringUtils"), context.getValueAccess())
+                                .beginControlFlow("if ($T.equalsIgnoreCase($L, expected))", ClassName.get(StringUtils.class), context.getValueAccess())
                                 .addStatement(failStatement(context, "is not equal ignoring case <%s>"))
                                 .endControlFlow()
                 ),

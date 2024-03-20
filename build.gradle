@@ -22,9 +22,11 @@ dependencies {
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
 
+
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
-        
+
+    implementation 'org.apache.commons:commons-lang3:3.14.0'
     implementation "com.squareup:javapoet:${javaPoetVersion}"
     implementation  'org.assertj:assertj-core:3.25.3'
 }

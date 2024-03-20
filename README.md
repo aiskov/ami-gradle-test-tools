@@ -8,6 +8,7 @@ for target classes.
 
 Assertions Generator:
 * AssertJ
+* Apache Commons Lang 3 (`org.apache.commons:commons-lang3`)
 
 Fixtures Generator
 * Lombok
