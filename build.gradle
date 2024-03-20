@@ -30,11 +30,14 @@ dependencies {
 }
 
 gradlePlugin {
+    website.set("https://github.com/aiskov/ami-gradle-test-tools")
+    vcsUrl.set("https://github.com/aiskov/ami-gradle-test-tools")
+
     plugins {
         create("gradle-test-tools") {
             println "${group}:${rootProject.name}:${version}"
 
-            id = "${rootProject.name}"
+            id = "com.aiskov.${rootProject.name}"
 
             displayName = "Gradle Test Tools"
             description = "Tools that helps to create tests."
