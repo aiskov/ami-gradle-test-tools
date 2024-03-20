@@ -1,6 +1,9 @@
 Gradle Test Tools
 =================
 
+This plugin provides a set of test tools generators for Java projects. It allows generating assertions and fixtures 
+for target classes.
+
 ## Requirements
 
 Assertions Generator:
@@ -39,7 +42,7 @@ generateFixtures {
 }
 ```
 
-Add generated source to test classpath:
+Add the generated source to test classpath:
 
 ```groovy
 sourceSets {
