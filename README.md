@@ -12,7 +12,7 @@ This plugin provides the following features:
 * Fixtures Generator
   * Using documentation annotations with examples (it may use any annotation that have `example` param)
   * Using random values
-  * 
+
 ## Getting Started
 
 To use this plugin, include it in your `build.gradle` file:
