@@ -4,6 +4,25 @@ Gradle Test Tools
 This plugin provides a set of test tools generators for Java projects. It allows generating assertions and fixtures 
 for target classes.
 
+## Features
+
+This plugin provides the following features:
+
+* Assertions Generator
+* Fixtures Generator
+  * Using documentation annotations with examples (it may use any annotation that have `example` param)
+  * Using random values
+  * 
+## Getting Started
+
+To use this plugin, include it in your `build.gradle` file:
+
+```groovy
+plugins {
+  id 'com.aiskov.gradle-test-tool' version '1.0.1'
+}
+```
+
 ## Requirements
 
 Assertions Generator:
@@ -16,7 +35,9 @@ Fixtures Generator
 
 ## Configuration
 
-Generation of assertions:
+### Assertions Generator
+
+To generate assertions, configure the `generateAssertions` task in your `build.gradle`:
 
 ```groovy
 generateAssertions {
@@ -28,7 +49,9 @@ generateAssertions {
 }
 ```
 
-Generation of fixtures:
+### Fixtures Generator
+
+To generate fixtures, configure the `generateFixtures` task in your `build.gradle`:
 
 ```groovy
 generateFixtures {
@@ -43,7 +66,9 @@ generateFixtures {
 }
 ```
 
-Add the generated source to test classpath:
+### Generated sources
+
+Add generated source to test classpath:
 
 ```groovy
 sourceSets {
@@ -54,3 +79,6 @@ sourceSets {
     }
 }
 ```
+
+## Contributing
+Contributions are welcome. Please submit a pull request with your changes.
